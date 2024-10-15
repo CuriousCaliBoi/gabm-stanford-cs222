@@ -331,6 +331,8 @@ class MemoryStream:
 # ##############################################################################
 # ###                 HELPER FUNCTIONS FOR GENERATIVE AGENTS                 ###
 # ##############################################################################
+# 1:37 is when i started typing this
+# I also need to figure out some more vim specific stuff for editing like copying and pasting and stuff like that
 
 def extract_recency(seq_nodes: List[ConceptNode]) -> Dict[int, float]:
   """
@@ -364,10 +366,21 @@ def extract_recency(seq_nodes: List[ConceptNode]) -> Dict[int, float]:
   - The most recently accessed node(s) will always have a score of 1.
   - Scores decrease exponentially for older memories.
   """
-  # Complete the function below. 
-  # [TODO]
+  max_timestep = max(node.last_retrieved for node in seq_nodes)
+  recency_decay = 0.99
+  recency_scores = {}
 
-  return dict()
+  for node in seq_nodes:
+      score = recency_decay ** (max_timestep - node.last_retrieved)
+      recency_scores[node.node_id] = score
+
+  return recency_scores
+# The difference between max_timestep and node.last_retrieved is what we raise the decay to the power of
+# so after 69 steps we get a recenxy score of 0.5 
+#hopefully that makes sense
+
+#And we just calculate that by subtracting the last state and whenever we inputted the node
+  # return dict()
 
 
 def extract_importance(seq_nodes: List[ConceptNode]) -> Dict[int, float]:
@@ -401,8 +414,16 @@ def extract_importance(seq_nodes: List[ConceptNode]) -> Dict[int, float]:
   """
   # Complete the function below. 
   # [TODO]
+  importance_scores = {}  # Initialize the importance scores dictionary
+  for node in seq_nodes:
+      # Map each node's ID to its importance score
+      node_id = node.node_id
+      importance_score = node.importance
+      # Store the mapping in a dictionary
+      importance_scores[node_id] = importance_score
+  return importance_scores
 
-  return dict()
+# Literally just initialized the dict and then mapped the node id to the importance score
 
 
 def extract_relevance(seq_nodes: List[ConceptNode], 
@@ -436,19 +457,19 @@ def extract_relevance(seq_nodes: List[ConceptNode],
      b. Calculate the cosine similarity between the node's embedding and the 
         focal point's embedding.
   3. Return a dictionary of node IDs mapped to their relevance scores.
-
-  Note:
-  - Cosine similarity is used as the relevance metric. It ranges from -1 
-    (opposite) to 1 (identical).
-  - The function assumes that embeddings exist for both the focal point and 
-    all node contents.
-  - The quality of relevance scoring depends on the quality of the embedding 
-    model used.
   """
-  # Complete the function below. 
-  # [TODO]
+  
+  focal_embedding = embeddings.get(focal_pt)
+  relevance_scores = {}
 
-  return dict()
+  for node in seq_nodes:
+      node_embedding = embeddings.get(node.content)
+      if node_embedding is not None and focal_embedding is not None:
+          # Calculate cosine similarity
+          relevance_scores[node.node_id] = cos_sim(focal_embedding, node_embedding)
+  return relevance_scores
+# way to map the function on all the nodes in the list
+#uniquely doesnt 
 
 
 # ##############################################################################

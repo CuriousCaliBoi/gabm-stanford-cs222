@@ -1,2 +1,2 @@
-*.DS_Store
-*simulation_engine/settings.py
+.DS_Store
+simulation_engine/settings.pyAPI_Key.txt

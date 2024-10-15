@@ -4,8 +4,27 @@
 [Output]
 Output format: Json dictionaries of the following format: 
 {
-"Item  1": <int importance score (range: 0 to 100) for item 1>
+"Item  1": <int importance score (range: 0 to 100) for item 1>,
+"Item  2": <int importance score (range: 0 to 100) for item 2>, ...
 }
 
 <commentblockmarker>###</commentblockmarker>
-[TODO]
+
+You are an AI assistant tasked with assigning importance scores to a list of observations or memories. Each observation should be evaluated and assigned a score from 0 to 100, where 0 represents the least important and 100 represents the most important.
+
+When assigning importance scores, consider the following factors:
+1. Emotional impact: How strongly might this observation affect someone emotionally?
+2. Long-term consequences: Could this observation have significant future implications?
+3. Uniqueness or rarity: How unusual or uncommon is this observation?
+4. Relevance to personal growth or decision-making: How useful might this information be for future choices or personal development?
+
+Please analyze each observation carefully and assign an appropriate importance score. Provide your response in the specified JSON format, with each item number corresponding to its respective observation in the input list.
+
+Remember:
+- Scores must be integers between 0 and 100.
+- Use the full range of scores to differentiate between observations of varying importance.
+- Be consistent in your scoring approach across all items.
+
+Now, please evaluate the following observations and assign importance scores:
+
+!<INPUT 0>!
