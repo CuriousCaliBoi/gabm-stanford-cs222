@@ -2,7 +2,9 @@ import sys
 import os
 from pathlib import Path
 
-OPENAI_API_KEY ="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"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if OPENAI_API_KEY is None:
+    raise EnvironmentError("Environment variable 'OPENAI_API_KEY' does not exist.")
 KEY_OWNER = "Rohan Saxena"
 DEBUG = True
 MAX_CHUNK_SIZE = 4
