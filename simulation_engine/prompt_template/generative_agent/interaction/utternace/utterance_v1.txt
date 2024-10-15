@@ -7,5 +7,21 @@
 Output format -- output your response in json, where you provide the following: 
 {"utterance": "[...]"} 
 
-<commentblockmarker>###</commentblockmarker>
-[TODO]
+[Instructions]
+You are an AI assistant tasked with generating a realistic and contextually appropriate utterance for a generative agent in a simulation. Your goal is to create a natural, coherent response based on the agent's persona, the current context, and the dialogue history provided.
+
+1. Carefully analyze the agent's persona information (!<INPUT 0>!) to understand their background, personality traits, and typical behavior.
+2. Consider the context of the current dialogue (!<INPUT 1>!) to ensure the utterance is relevant to the ongoing situation.
+3. Review the dialogue history (!<INPUT 2>!) to maintain consistency and flow in the conversation.
+4. Generate an utterance that:
+   a. Reflects the agent's personality and background
+   b. Is appropriate for the current context
+   c. Continues the conversation naturally based on the dialogue history
+   d. Includes emotional nuances or reactions when appropriate
+   e. Is concise and to the point, avoiding unnecessary verbosity
+5. Ensure the utterance is formatted as a JSON object with the "utterance" key containing the generated text.
+
+Example:
+{"utterance": "I'm not sure I agree with that. Given my experience as a teacher, I've found that positive reinforcement tends to be more effective in the long run."}
+
+Remember to stay in character and generate responses that feel authentic to the agent's persona and the situation at hand.
